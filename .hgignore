@@ -2,3 +2,5 @@ relre:\.suo$
 relre:\.user$
 relre:/bin/
 relre:/obj/
+relre:/VersionInfo.cs$
+relre:^MSBuildVersioning.dll$

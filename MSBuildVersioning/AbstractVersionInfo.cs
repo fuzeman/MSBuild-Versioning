@@ -17,6 +17,7 @@ namespace MSBuildVersioning
             {
                 process.StartInfo.FileName = fileName;
                 process.StartInfo.Arguments = arguments;
+                process.StartInfo.CreateNoWindow = true;
                 process.StartInfo.UseShellExecute = false;
                 process.StartInfo.RedirectStandardOutput = true;
                 process.StartInfo.RedirectStandardError = true;

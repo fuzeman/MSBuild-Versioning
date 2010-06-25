@@ -4,3 +4,4 @@ relre:/bin/
 relre:/obj/
 relre:/VersionInfo.cs$
 relre:^MSBuildVersioning.dll$
+relre:^MSBuildVersioning\.Debug/Program\.cs$

@@ -19,7 +19,7 @@ namespace MSBuildVersioning
         {
             if (revisionNumber == null)
             {
-                string revisionNumberStr = ExecuteCommand("hg.exe", "identify -n");
+                string revisionNumberStr = ExecuteCommand("hg.exe", "identify -n")[0];
 
                 if (revisionNumberStr.EndsWith("+"))
                 {
@@ -40,7 +40,7 @@ namespace MSBuildVersioning
         {
             if (revisionId == null)
             {
-                revisionId = ExecuteCommand("hg.exe", "identify -i");
+                revisionId = ExecuteCommand("hg.exe", "identify -i")[0];
 
                 if (revisionId.EndsWith("+"))
                 {
@@ -68,7 +68,7 @@ namespace MSBuildVersioning
         {
             if (branch == null)
             {
-                branch = ExecuteCommand("hg.exe", "identify -b");
+                branch = ExecuteCommand("hg.exe", "identify -b")[0];
             }
             return branch;
         }
@@ -77,7 +77,7 @@ namespace MSBuildVersioning
         {
             if (tags == null)
             {
-                tags = ExecuteCommand("hg.exe", "identify -t");
+                tags = ExecuteCommand("hg.exe", "identify -t")[0];
             }
             return tags;
         }

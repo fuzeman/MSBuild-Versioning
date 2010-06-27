@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Text;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace MSBuildVersioning
 {
@@ -50,7 +51,25 @@ namespace MSBuildVersioning
                             error.AppendLine(e.Data);
                     };
 
-                process.Start();
+                try
+                {
+                    process.Start();
+                }
+                catch (Win32Exception e)
+                {
+                    if (e.NativeErrorCode == 2) // file not found
+                    {
+                        throw new BuildErrorException(String.Format(
+                            "{0} command \"{1}\" could not be found." + Environment.NewLine +
+                            "Please ensure that {0} is installed.",
+                            SourceControlName, fileName));
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+
                 process.BeginOutputReadLine();
                 process.BeginErrorReadLine();
                 process.WaitForExit();

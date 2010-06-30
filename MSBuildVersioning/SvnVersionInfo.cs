@@ -81,7 +81,15 @@ namespace MSBuildVersioning
 
         public string GetRepositoryPath()
         {
-            return GetRepositoryUrl().Substring(GetRepositoryRoot().Length);
+            string path = GetRepositoryUrl().Substring(GetRepositoryRoot().Length);
+            if (path.Length == 0)
+            {
+                return "/";
+            }
+            else
+            {
+                return path;
+            }
         }
 
         public string GetName(string name)

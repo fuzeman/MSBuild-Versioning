@@ -8,40 +8,70 @@ namespace MSBuildVersioning.Test
     [TestFixture]
     public class SvnVersionInfoTest
     {
-        private SvnVersionInfo CreateSvnVersionInfo()
+        public SvnVersionInfo SvnWC1
         {
-            return new SvnVersionInfo() { Path = @"C:\Temp\SvnTest\More" };
+            get { return new SvnVersionInfo() { Path = @"C:\Temp\TestRepositories\SvnWC1" }; }
+        }
+
+        public SvnVersionInfo SvnWC2
+        {
+            get { return new SvnVersionInfo() { Path = @"C:\Temp\TestRepositories\SvnWC2" }; }
         }
 
         [Test]
         public void GetRevisionNumberTest()
         {
-            int revisionNumber = CreateSvnVersionInfo().GetRevisionNumber();
-            Assert.AreEqual(2, revisionNumber);
+            Assert.AreEqual(6, SvnWC1.GetRevisionNumber());
+            Assert.AreEqual(5, SvnWC2.GetRevisionNumber());
         }
 
         [Test]
         public void IsMixedRevisionsTest()
         {
-            CreateSvnVersionInfo().IsMixedRevisions();
+            Assert.IsTrue(SvnWC1.IsMixedRevisions());
+            Assert.IsFalse(SvnWC2.IsMixedRevisions());
         }
 
         [Test]
         public void IsWorkingCopyDirtyTest()
         {
-            CreateSvnVersionInfo().IsWorkingCopyDirty();
+            Assert.IsFalse(SvnWC1.IsWorkingCopyDirty());
+            Assert.IsTrue(SvnWC2.IsWorkingCopyDirty());
+        }
+
+        [Test]
+        public void GetRepositoryUrlTest()
+        {
+            Assert.AreEqual("file:///C:/Temp/TestRepositories/SvnRepo", SvnWC1.GetRepositoryUrl());
+            Assert.AreEqual("file:///C:/Temp/TestRepositories/SvnRepo/branches/beef", SvnWC2.GetRepositoryUrl());
+        }
+
+        [Test]
+        public void GetRepositoryRootTest()
+        {
+            Assert.AreEqual("file:///C:/Temp/TestRepositories/SvnRepo", SvnWC1.GetRepositoryRoot());
+            Assert.AreEqual("file:///C:/Temp/TestRepositories/SvnRepo", SvnWC2.GetRepositoryRoot());
+        }
+
+        [Test]
+        public void GetRepositoryPathTest()
+        {
+            Assert.AreEqual("/", SvnWC1.GetRepositoryPath());
+            Assert.AreEqual("/branches/beef", SvnWC2.GetRepositoryPath());
         }
 
         [Test]
         public void GetBranchTest()
         {
-            CreateSvnVersionInfo().GetBranch();
+            Assert.AreEqual("", SvnWC1.GetBranch());
+            Assert.AreEqual("beef", SvnWC2.GetBranch());
         }
 
         [Test]
         public void GetTagTest()
         {
-            CreateSvnVersionInfo().GetTag();
+            Assert.AreEqual("", SvnWC1.GetTag());
+            Assert.AreEqual("", SvnWC2.GetTag());
         }
     }
 }

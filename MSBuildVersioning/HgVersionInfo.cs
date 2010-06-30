@@ -15,7 +15,7 @@ namespace MSBuildVersioning
             get { return "Mercurial"; }
         }
 
-        public int GetRevisionNumber()
+        public virtual int GetRevisionNumber()
         {
             if (revisionNumber == null)
             {
@@ -36,7 +36,7 @@ namespace MSBuildVersioning
             return (int)revisionNumber;
         }
 
-        public string GetRevisionId()
+        public virtual string GetRevisionId()
         {
             if (revisionId == null)
             {
@@ -55,7 +55,7 @@ namespace MSBuildVersioning
             return revisionId;
         }
 
-        public bool IsWorkingCopyDirty()
+        public virtual bool IsWorkingCopyDirty()
         {
             if (isWorkingCopyDirty == null)
             {
@@ -64,7 +64,7 @@ namespace MSBuildVersioning
             return (bool)isWorkingCopyDirty;
         }
 
-        public string GetBranch()
+        public virtual string GetBranch()
         {
             if (branch == null)
             {
@@ -73,7 +73,7 @@ namespace MSBuildVersioning
             return branch;
         }
 
-        public string GetTags()
+        public virtual string GetTags()
         {
             if (tags == null)
             {

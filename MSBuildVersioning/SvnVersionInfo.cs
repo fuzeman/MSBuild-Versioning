@@ -18,7 +18,7 @@ namespace MSBuildVersioning
             get { return "Subversion"; }
         }
 
-        public int GetRevisionNumber()
+        public virtual int GetRevisionNumber()
         {
             if (revisionNumber == null)
             {
@@ -30,7 +30,7 @@ namespace MSBuildVersioning
             return (int)revisionNumber;
         }
 
-        public bool IsMixedRevisions()
+        public virtual bool IsMixedRevisions()
         {
             if (isMixedRevisions == null)
             {
@@ -39,7 +39,7 @@ namespace MSBuildVersioning
             return (bool)isMixedRevisions;
         }
 
-        public bool IsWorkingCopyDirty()
+        public virtual bool IsWorkingCopyDirty()
         {
             if (isWorkingCopyDirty == null)
             {
@@ -50,7 +50,7 @@ namespace MSBuildVersioning
             return (bool)isWorkingCopyDirty;
         }
 
-        public string GetRepositoryUrl()
+        public virtual string GetRepositoryUrl()
         {
             if (repositoryUrl == null)
             {
@@ -70,7 +70,7 @@ namespace MSBuildVersioning
             return repositoryUrl;
         }
 
-        public string GetRepositoryRoot()
+        public virtual string GetRepositoryRoot()
         {
             if (repositoryRoot == null)
             {
@@ -79,7 +79,7 @@ namespace MSBuildVersioning
             return repositoryRoot;
         }
 
-        public string GetRepositoryPath()
+        public virtual string GetRepositoryPath()
         {
             string path = GetRepositoryUrl().Substring(GetRepositoryRoot().Length);
             if (path.Length == 0)
@@ -92,12 +92,12 @@ namespace MSBuildVersioning
             }
         }
 
-        public string GetName(string name)
+        public virtual string GetRepositorySubDirectory(string directory)
         {
             string[] pathComponents = GetRepositoryPath().Split('/');
             for (int i = 0; i < pathComponents.Length - 1; i++)
             {
-                if (pathComponents[i] == name)
+                if (pathComponents[i] == directory)
                 {
                     return pathComponents[i + 1];
                 }
@@ -105,14 +105,14 @@ namespace MSBuildVersioning
             return "";
         }
 
-        public string GetBranch()
+        public virtual string GetBranch()
         {
-            return GetName("branches");
+            return GetRepositorySubDirectory("branches");
         }
 
-        public string GetTag()
+        public virtual string GetTag()
         {
-            return GetName("tags");
+            return GetRepositorySubDirectory("tags");
         }
 
         private class SvnInfoParser

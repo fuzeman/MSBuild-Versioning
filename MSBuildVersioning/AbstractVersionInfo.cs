@@ -13,7 +13,7 @@ namespace MSBuildVersioning
             Path = "";
         }
 
-        public string Path { get; set; }
+        public virtual string Path { get; set; }
 
         public abstract string SourceControlName { get; }
 

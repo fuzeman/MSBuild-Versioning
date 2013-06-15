@@ -1,13 +1,29 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual C# Express 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSBuildVersioning", "MSBuildVersioning\MSBuildVersioning.csproj", "{A8C04BD0-ED60-4920-920F-FE3A12F34C50}"
+	GlobalSection(PlasticSccProperties) = preSolution
+		ControlledByPlastic = True
+		SccProvider = Plastic SCM
+	EndGlobalSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSBuildVersioning.Test", "MSBuildVersioning.Test\MSBuildVersioning.Test.csproj", "{44FF758F-F289-4A5A-A75C-13F1040F2157}"
+	GlobalSection(PlasticSccProperties) = preSolution
+		ControlledByPlastic = True
+		SccProvider = Plastic SCM
+	EndGlobalSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSBuildVersioning.Debug", "MSBuildVersioning.Debug\MSBuildVersioning.Debug.csproj", "{AE5DA302-0323-4085-A93A-DB07555D9ABA}"
+	GlobalSection(PlasticSccProperties) = preSolution
+		ControlledByPlastic = True
+		SccProvider = Plastic SCM
+	EndGlobalSection
 EndProject
 Global
+	GlobalSection(PlasticSccProperties) = preSolution
+		ControlledByPlastic = True
+		SccProvider = Plastic SCM
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms

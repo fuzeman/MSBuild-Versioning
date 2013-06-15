@@ -13,6 +13,10 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <SccProjectName>PlasticSCM</SccProjectName>
+    <SccLocalPath>PlasticSCM</SccLocalPath>
+    <SccAuxPath>PlasticSCM</SccAuxPath>
+    <SccProvider>Plastic SCM Source Control Service:{774e58ba-f1b9-40a7-b676-834fa2c220fe}</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -44,6 +48,9 @@
     <Compile Include="GitVersionTokenReplacer.cs" />
     <Compile Include="HgInfoProvider.cs" />
     <Compile Include="HgVersionTokenReplacer.cs" />
+    <Compile Include="PlasticInfoProvider.cs" />
+    <Compile Include="PlasticVersionFile.cs" />
+    <Compile Include="PlasticVersionTokenReplacer.cs" />
     <Compile Include="SourceControlInfoProvider.cs" />
     <Compile Include="HgVersionFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -56,9 +63,9 @@
     <Compile Include="Properties\VersionInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <UsingTask TaskName="HgVersionFile" AssemblyFile="..\References\MSBuildVersioning.dll" />
+  <UsingTask TaskName="PlasticVersionFile" AssemblyFile="..\References\MSBuildVersioning.dll" />
   <Target Name="BeforeBuild">
-    <HgVersionFile TemplateFile="Properties\VersionInfo.base.cs" DestinationFile="Properties\VersionInfo.cs" />
+    <PlasticVersionFile TemplateFile="Properties\VersionInfo.base.cs" DestinationFile="Properties\VersionInfo.cs" />
   </Target>
   <Target Name="AfterBuild">
   </Target>
